@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Saber - Flutter Developer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #ff0080, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+            background-size: 200% 200%;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .hero .description {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+        }
+
+        .experience-item {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 2rem 0 2rem 4rem;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 2rem;
+            width: 1rem;
+            height: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+            border-radius: 50%;
+            border: 3px solid #0a0a0a;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-period {
+            color: #ff0080;
+            font-weight: 600;
+        }
+
+        .job-location {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .job-responsibilities {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .job-responsibilities li {
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+            position: relative;
+            opacity: 0.9;
+        }
+
+        .job-responsibilities li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #00d4ff;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #00d4ff;
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .project-description {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(255, 0, 128, 0.2);
+            color: #ff0080;
+            padding: 0.2rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 0, 128, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-links a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid #00d4ff;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .project-links a:hover {
+            background: #00d4ff;
+            color: #0a0a0a;
+        }
+
+        /* Education Section */
+        .education-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .education-title {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .education-details {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #00d4ff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 1rem;
+                min-height: 90vh;
+            }
+
+            .experience-timeline::before {
+                left: 1rem;
+            }
+
+            .experience-item {
+                margin-left: 2rem;
+            }
+
+            .experience-item::before {
+                left: -2.5rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator"></div>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Mohammed Saber</div>
+            <div class="menu-toggle">☰</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Mohammed Saber</h1>
+            <p class="subtitle">Flutter Developer | Mobile App Specialist</p>
+            <p class="description">
+                Flutter Developer with a focus on creating high-performance cross-platform mobile apps using Dart and Flutter. Published multiple successful apps on Google Play and App Store. Skilled in translating design into functional interfaces, implementing state management, and optimizing code. Proactive problem solver committed to staying updated on industry trends. Effective collaborator seeking impactful projects to contribute expertise.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company-name">Addicta</div>
+                        <div class="job-title">Flutter Developer</div>
+                        <div class="job-location">New Cairo, Cairo, Egypt</div>
+                    </div>
+                    <div class="job-period">May 2024 - Present</div>
+                </div>
+                <ul class="job-responsibilities">
+                    <li>Architectural Skills: Proficient in designing scalable, maintainable, and efficient mobile app architectures, including MVVM, MVC, Clean Architecture, and other best practices.</li>
+                    <li>Advanced Knowledge of Mobile SDKs and APIs: Skilled in working with mobile-specific SDKs (Firebase, Google Play Services, etc.) and integrating RESTful APIs and WebSockets.</li>
+                    <li>State Management Expertise: Advanced knowledge of state management techniques (e.g., Provider, Bloc, Riverpod) and their implementation in complex mobile applications.</li>
+                    <li>Problem-Solving Abilities: Exceptional problem-solving skills with the ability to troubleshoot complex issues, adapt to new technologies, and continuously improve app performance and user experience.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company-name">Sahl Solution</div>
+                        <div class="job-title">Flutter Developer</div>
+                        <div class="job-location">Nasr City, Cairo, Egypt</div>
+                    </div>
+                    <div class="job-period">Jul 2023 - Apr 2024</div>
+                </div>
+                <ul class="job-responsibilities">
+                    <li>Accomplished Flutter Developer crafting Internet-based apps for diverse clients.</li>
+                    <li>Expertise in creatively integrating web and mobile experiences, prioritizing innovative app development.</li>
+                    <li>Actively contributes to cutting-edge solutions in a dynamic work environment.</li>
+                    <li>Thrives on continuous learning and growth, leveraging Flutter skills for impactful applications.</li>
+                    <li>Committed to seamless web experiences, aiming for innovation and excellence in every project.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company-name">Grand Community</div>
+                        <div class="job-title">Flutter Developer</div>
+                        <div class="job-location">Mansoura, Egypt</div>
+                    </div>
+                    <div class="job-period">Jun 2022 - Apr 2023</div>
+                </div>
+                <ul class="job-responsibilities">
+                    <li>Integration of various APIs for data manipulation in Flutter applications.</li>
+                    <li>Utilization of Git for version control in software development.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company-name">Jaadara</div>
+                        <div class="job-title">Flutter Developer</div>
+                        <div class="job-location">Mansoura, Egypt</div>
+                    </div>
+                    <div class="job-period">Nov 2020 - Jan 2022</div>
+                </div>
+                <ul class="job-responsibilities">
+                    <li>Collaborated in a team to design, develop, and maintain mobile apps for clients.</li>
+                    <li>Implemented advanced features like push notifications, in-app purchases, and social media integration.</li>
+                    <li>Ensured visually appealing and user-friendly apps through close collaboration with the design team.</li>
+                    <li>Utilized various APIs in Flutter for high-performance and responsive mobile app development.</li>
+                    <li>Leveraged Firebase for user authentication, storage, real-time data synchronization, and backend services.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">📱</div>
+                <h3 class="skill-title">Mobile Development</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">Dart</span>
+                    <span class="skill-tag">Cross-platform</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🏗️</div>
+                <h3 class="skill-title">Architecture & Patterns</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">MVVM</span>
+                    <span class="skill-tag">MVC</span>
+                    <span class="skill-tag">Clean Architecture</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">⚡</div>
+                <h3 class="skill-title">State Management</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Provider</span>
+                    <span class="skill-tag">Bloc</span>
+                    <span class="skill-tag">Riverpod</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔥</div>
+                <h3 class="skill-title">Backend & APIs</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">RESTful APIs</span>
+                    <span class="skill-tag">WebSockets</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🛠️</div>
+                <h3 class="skill-title">Development Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Agile</span>
+                    <span class="skill-tag">App Optimization</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🎨</div>
+                <h3 class="skill-title">UI/UX & Design</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">UI/UX Implementation</span>
+                    <span class="skill-tag">Google Play Services</span>
+                    <span class="skill-tag">Mobile SDKs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Published Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://play-lh.googleusercontent.com/2s8ZGWNVCJE7I7kGT0wGu0od0NuxT8HA-EtZCk_4sibI0X6ghBLA8A1-x_Np_iLtqJcy=w832-h470-rw');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Go Halal</h3>
+                    <p class="project-description">
+                        Application that helps users locate halal food options nearby. The app is designed to connect Muslims with halal restaurants, shops, and other halal food providers.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Maps API</span>
+                        <span class="tech-tag">Location Services</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.go_halal" target="_blank">User App - Google Play</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.app.go_halal_delivery_boy" target="_blank">Delivery App - Google Play</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://play-lh.googleusercontent.com/L3jx3-he4O0LpHAQaWP4c973F2kAz1NE_acZZGx3bsLPsWvLt__WMvg2saI2qobNlVIC=w832-h470-rw');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">We Lyra</h3>
+                    <p class="project-description">
+                        A comprehensive platform designed to enhance the shopping experience by offering a wide range of products and categories. Supports multilingual functionality and provides users with a smooth, engaging, and personalized experience.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Multi-language</span>
+                        <span class="tech-tag">E-commerce</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://apps.apple.com/eg/app/welyra/id6739073762" target="_blank">App Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.application.welyra" target="_blank">Google Play</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://play-lh.googleusercontent.com/hEidKNqwStZ-GkS1ecweOy30SqZbckgYRqPEeuZbFZYqVa7sIs5K-gUS6DORAUEjoAM=w832-h470-rw');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Egypt for Auctions</h3>
+                    <p class="project-description">
+                        Developed a real-time auction application, powered by Socket.IO to facilitate live bidding and dynamic updates. Features instant push notifications to keep users informed about auction updates, bidding status, and upcoming events.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Socket.IO</span>
+                        <span class="tech-tag">Real-time</span>
+                        <span class="tech-tag">Push Notifications</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.mazadatApp.masrMazadat" target="_blank">Google Play</a>
+                        <a href="https://apps.apple.com/eg/app/egypt-auctions-%D9%85%D8%B5%D8%B1-%D9%84%D9%84%D9%85%D8%B2%D8%A7%D8%AF%D8%A7%D8%AA/id6590630402" target="_blank">App Store</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://play-lh.googleusercontent.com/DbSvAP67A_1tfwsalOkSWc2V0lT1I1HC0OBuZQKcHdQIc7R8cIWzGdRo-fbJCUrYiMep=w832-h470-rw');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">ENERGIZE PLUS</h3>
+                    <p class="project-description">
+                        System for organizing your brand's sales and marketing activity and obtaining the best effective reports. Aligns sales and marketing strategies for synchronized approach, ensuring cohesive brand promotion.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Analytics</span>
+                        <span class="tech-tag">Reports</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.sahl.solution.energizeplus" target="_blank">Google Play</a>
+                        <a href="https://apps.apple.com/eg/app/energize-plus/id6475412039" target="_blank">App Store</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://play-lh.googleusercontent.com/IT_g2pUZLum3djj6tHNo5vT2hWH20nkDE3nh0MDANUzdwC1JghTkptjrj-d2PqdndrLK=w832-h470-rw');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Suhail App</h3>
+                    <p class="project-description">
+                        Facilitates customers in inputting shipment details and choosing captains for goods transport. Customers can select captains based on profiles, including ratings and personal details for efficient and reliable goods transportation.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Logistics</span>
+                        <span class="tech-tag">Rating System</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.suhail.app" target="_blank">Google Play</a>
+                        <a href="https://apps.apple.com/eg/app/suhail-%D8%B3%D9%87%D9%8A%D9%84/id1644121617" target="_blank">App Store</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+             <section id="education">
+                <h2 class="section-title">Education</h2>
+                <div class="education-card">
+                    <div class="education-title">Bachelor's Degree in Computer Science</div>
+                    <div class="education-details">
+                        <p><strong>Faculty of Computers and Information</strong></p>
+                        <p>Mansoura University</p>
+                        <p><strong>Duration:</strong> 2016 - 2020</p>
+                        <p><strong>Grade:</strong> Good</p>
+                        <p><strong>Graduation Project:</strong> Excellent</p>
+                    </div>
+                </div>
+            </section>
+        <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p>Ready to bring your mobile app ideas to life? Let's collaborate and create something amazing together. I'm always excited to work on innovative projects and help businesses reach their goals through high-quality mobile applications.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:mohammed.s.eltwahy@gmail.com">mohammed.s.eltwahy@gmail.com</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+201156165689">+20 115 616 5689</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <span>Cairo, Egypt</span>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/mohammed-saber-30440516b/" target="_blank">Connect with me</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/mohamed-eltwahy" target="_blank">View my code</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <h3>Let's Chat</h3>
+                    <span>Available for freelance projects</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Mohammed Saber. All rights reserved. Built with passion for mobile development.</p>
+    </footer>
+
+    <script>
+        // Enhance smooth scroll for browsers that don't support CSS scroll-behavior
+        document.querySelectorAll('nav .nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAZsxo2zb8G9YlfLSzvR52hmtu5BwLPs3E",
+          authDomain: "portfolio-host-492fd.firebaseapp.com",
+          projectId: "portfolio-host-492fd",
+          storageBucket: "portfolio-host-492fd.firebasestorage.app",
+          messagingSenderId: "235359772949",
+          appId: "1:235359772949:web:3b7dce953f660633ba891c",
+          measurementId: "G-SN44DGP1HE"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>
