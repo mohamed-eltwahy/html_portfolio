@@ -535,10 +535,38 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .nav-links a {
+                padding: 1rem 2rem;
+                display: block;
+                font-size: 1.1rem;
             }
 
             .menu-toggle {
                 display: block;
+                transition: transform 0.3s ease;
+            }
+
+            .menu-toggle.active {
+                transform: rotate(90deg);
             }
 
             .hero {
@@ -926,6 +954,23 @@
     </footer>
 
     <script>
+        // Menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav .nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
         // Enhance smooth scroll for browsers that don't support CSS scroll-behavior
         document.querySelectorAll('nav .nav-links a').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -940,28 +985,6 @@
             });
         });
     </script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyAZsxo2zb8G9YlfLSzvR52hmtu5BwLPs3E",
-          authDomain: "portfolio-host-492fd.firebaseapp.com",
-          projectId: "portfolio-host-492fd",
-          storageBucket: "portfolio-host-492fd.firebasestorage.app",
-          messagingSenderId: "235359772949",
-          appId: "1:235359772949:web:3b7dce953f660633ba891c",
-          measurementId: "G-SN44DGP1HE"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-      </script>
+  
 </body>
 </html>
