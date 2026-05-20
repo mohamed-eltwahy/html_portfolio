@@ -258,6 +258,47 @@
     backdrop-filter: blur(10px);
   }
   .btn-outline:hover { border-color: var(--violet); background: rgba(139,92,246,0.08); transform: translateY(-2px); }
+  .btn-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.9rem 1.75rem;
+    background: rgba(6,214,199,0.1);
+    border: 1px solid rgba(6,214,199,0.28);
+    border-radius: 100px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: none;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s, box-shadow 0.25s;
+    backdrop-filter: blur(10px);
+  }
+  .btn-call:hover { border-color: var(--cyan); background: rgba(6,214,199,0.16); transform: translateY(-2px); box-shadow: 0 0 28px rgba(6,214,199,0.22); }
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.9rem 1.75rem;
+    background: rgba(37,211,102,0.1);
+    border: 1px solid rgba(37,211,102,0.28);
+    border-radius: 100px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: none;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s, box-shadow 0.25s;
+    backdrop-filter: blur(10px);
+  }
+  .btn-wa:hover { border-color: #25d366; background: rgba(37,211,102,0.16); transform: translateY(-2px); box-shadow: 0 0 28px rgba(37,211,102,0.22); }
+  .btn-icon { width: 1.05rem; height: 1.05rem; flex-shrink: 0; }
+  .btn-call:focus-visible,
+  .btn-wa:focus-visible,
+  .btn-grad:focus-visible,
+  .btn-outline:focus-visible,
+  .float-btn:focus-visible,
+  .contact-item:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
   .hero-stats {
     display: flex;
     gap: 2.5rem;
@@ -403,13 +444,72 @@
   .ci-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
   .ci-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.15rem; }
   .ci-value { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+  .contact-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .icon-green { background: rgba(37,211,102,0.12); }
+  .floating-contact {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-end;
+  }
+  .float-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    text-decoration: none;
+    color: #fff;
+    cursor: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  }
+  .float-btn svg { width: 1.35rem; height: 1.35rem; }
+  .float-btn:hover { transform: translateY(-3px) scale(1.04); }
+  .float-call { background: linear-gradient(135deg, rgba(6,214,199,0.95), rgba(99,102,241,0.95)); }
+  .float-call:hover { box-shadow: 0 12px 36px rgba(6,214,199,0.35); border-color: rgba(6,214,199,0.5); }
+  .float-wa { background: linear-gradient(135deg, #25d366, #128c7e); }
+  .float-wa:hover { box-shadow: 0 12px 36px rgba(37,211,102,0.35); border-color: rgba(37,211,102,0.5); }
+  .float-tooltip {
+    position: absolute;
+    right: calc(100% + 0.65rem);
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(12,12,34,0.95);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .float-btn:hover .float-tooltip,
+  .float-btn:focus-visible .float-tooltip { opacity: 1; transform: translateY(-50%) translateX(0); }
   footer { text-align: center; padding: 2rem; border-top: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--dim); letter-spacing: 0.06em; position: relative; z-index: 1; }
   footer span { background: var(--grad-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr 1fr; } .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } .contact-grid { grid-template-columns: 1fr; } }
-  @media (max-width: 640px) { nav { padding: 1rem 1.25rem; } .nav-links { display: none; } #hero { padding: 7rem 1.25rem 4rem; } .section-wrap { padding: 4.5rem 1.25rem; } .skills-grid { grid-template-columns: 1fr; } .contact-box { padding: 2.5rem 1.5rem; } .tl-card { padding: 1.25rem; } body { cursor: auto; } .cursor, .cursor-ring { display: none; } }
+  @media (max-width: 640px) { nav { padding: 1rem 1.25rem; } .nav-links { display: none; } #hero { padding: 7rem 1.25rem 4rem; } .section-wrap { padding: 4.5rem 1.25rem; } .skills-grid { grid-template-columns: 1fr; } .contact-box { padding: 2.5rem 1.5rem; } .tl-card { padding: 1.25rem; } body { cursor: auto; } .cursor, .cursor-ring { display: none; } .floating-contact { bottom: 1rem; right: 1rem; gap: 0.6rem; } .float-btn { width: 3rem; height: 3rem; cursor: pointer; } .float-tooltip { display: none; } .btn-call, .btn-wa { cursor: pointer; } }
 </style>
 </head>
 <body>
@@ -451,6 +551,14 @@
   <div class="hero-actions">
     <a href="#projects" class="btn-grad">View My Work →</a>
     <a href="#contact" class="btn-outline">Get In Touch</a>
+    <a href="tel:+201156165689" class="btn-call" aria-label="Call Mohamed Saber at +20 115 616 5689" title="Call +20 115 616 5689">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call Now
+    </a>
+    <a href="https://wa.me/201156165689" class="btn-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat with Mohamed Saber on WhatsApp" title="WhatsApp Mohamed Saber">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
   </div>
   <div class="hero-stats">
     <div class="stat">
@@ -629,11 +737,22 @@
       <div class="pill-label pill-violet" style="margin: 0 auto 1.5rem; width: fit-content;">Contact</div>
       <h2 class="contact-title">Let's build something <span class="grad">amazing</span> together</h2>
       <p class="contact-sub">Have a project in mind or want to talk Flutter, architecture, or mobile AI? I'm always open to the right opportunities.</p>
+      <div class="contact-actions">
+        <a href="tel:+201156165689" class="btn-call" aria-label="Call Mohamed Saber at +20 115 616 5689" title="Call +20 115 616 5689">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now
+        </a>
+        <a href="https://wa.me/201156165689" class="btn-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat with Mohamed Saber on WhatsApp" title="WhatsApp Mohamed Saber">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
       <div class="contact-grid">
-        <a href="mailto:mohammed.s.eltwahy@gmail.com" class="contact-item"><div class="ci-icon icon-violet">✉️</div><div><div class="ci-label">Email</div><div class="ci-value">mohammed.s.eltwahy@gmail.com</div></div></a>
-        <a href="tel:+201156165689" class="contact-item"><div class="ci-icon icon-cyan">📱</div><div><div class="ci-label">Phone</div><div class="ci-value">+20 115 616 5689</div></div></a>
-        <a href="https://www.linkedin.com/in/mohammed-saber21/" target="_blank" class="contact-item"><div class="ci-icon icon-rose">💼</div><div><div class="ci-label">LinkedIn</div><div class="ci-value">mohammed-saber21</div></div></a>
-        <a href="https://github.com/mohamed-saber21" target="_blank" class="contact-item"><div class="ci-icon icon-amber">⚙️</div><div><div class="ci-label">GitHub</div><div class="ci-value">mohamed-saber21</div></div></a>
+        <a href="mailto:mohammed.s.eltwahy@gmail.com" class="contact-item" aria-label="Email Mohamed Saber at mohammed.s.eltwahy@gmail.com"><div class="ci-icon icon-violet">✉️</div><div><div class="ci-label">Email</div><div class="ci-value">mohammed.s.eltwahy@gmail.com</div></div></a>
+        <a href="tel:+201156165689" class="contact-item" aria-label="Call Mohamed Saber at +20 115 616 5689"><div class="ci-icon icon-cyan">📱</div><div><div class="ci-label">Phone</div><div class="ci-value">+20 115 616 5689</div></div></a>
+        <a href="https://wa.me/201156165689" class="contact-item" target="_blank" rel="noopener noreferrer" aria-label="Chat with Mohamed Saber on WhatsApp"><div class="ci-icon icon-green">💬</div><div><div class="ci-label">WhatsApp</div><div class="ci-value">+20 115 616 5689</div></div></a>
+        <a href="https://www.linkedin.com/in/mohammed-saber21/" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Visit Mohamed Saber on LinkedIn"><div class="ci-icon icon-rose">💼</div><div><div class="ci-label">LinkedIn</div><div class="ci-value">mohammed-saber21</div></div></a>
+        <a href="https://github.com/mohamed-saber21" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Visit Mohamed Saber on GitHub"><div class="ci-icon icon-amber">⚙️</div><div><div class="ci-label">GitHub</div><div class="ci-value">mohamed-saber21</div></div></a>
       </div>
       <a href="mailto:mohammed.s.eltwahy@gmail.com" class="btn-grad" style="position: relative;">Send a Message →</a>
     </div>
@@ -645,6 +764,17 @@
 </footer>
 
 </div>
+
+<aside class="floating-contact" aria-label="Quick contact options">
+  <a href="tel:+201156165689" class="float-btn float-call" aria-label="Call Mohamed Saber at +20 115 616 5689" title="Call Now">
+    <span class="float-tooltip" role="tooltip">Call Now</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/201156165689" class="float-btn float-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat with Mohamed Saber on WhatsApp" title="WhatsApp">
+    <span class="float-tooltip" role="tooltip">WhatsApp</span>
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</aside>
 
 <script>
   const cursor = document.getElementById('cursor');
