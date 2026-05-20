@@ -1,0 +1,21 @@
+{
+  "name": "Mohamed Saber — Flutter Developer",
+  "short_name": "Mohamed Saber",
+  "description": "Senior Flutter Developer portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060614",
+  "theme_color": "#060614",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
