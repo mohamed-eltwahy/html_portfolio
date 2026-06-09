@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mohamed Saber | Flutter Developer</title>
-<meta name="description" content="Senior Flutter Developer with 5+ years building cross-platform mobile apps — Clean Architecture, real-time systems, and AI-powered experiences for Android &amp; iOS." />
+<title>Mohamed Saber | Senior Flutter Developer</title>
+<meta name="description" content="Senior Flutter Developer with 5+ years delivering scalable Flutter &amp; Dart mobile applications — Clean Architecture, SDLC, unit testing, CI/CD, Agile Scrum, technical leadership, REST APIs, and performance optimization for Android &amp; iOS." />
 <link rel="icon" href="/favicon.ico?v=1" sizes="48x48" />
 <link rel="icon" href="/favicon.svg?v=1" type="image/svg+xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1" />
@@ -16,14 +16,14 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://m-saber.web.app/" />
 <meta property="og:title" content="Mohammed Saber — Senior Flutter Developer" />
-<meta property="og:description" content="Senior Flutter Developer with 5+ years building cross-platform mobile apps — Clean Architecture, real-time systems, and AI-powered experiences for Android &amp; iOS." />
+<meta property="og:description" content="Senior Flutter Developer with 5+ years delivering scalable Flutter &amp; Dart mobile applications — Clean Architecture, SDLC, unit testing, CI/CD, Agile Scrum, technical leadership, REST APIs, and performance optimization for Android &amp; iOS." />
 <meta property="og:image" content="https://m-saber.web.app/images/linkedin-thumbnail.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:alt" content="Mohammed Saber — Senior Flutter Developer portfolio" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://m-saber.web.app/" />
 <meta name="twitter:title" content="Mohammed Saber — Senior Flutter Developer" />
-<meta name="twitter:description" content="Senior Flutter Developer with 5+ years building cross-platform mobile apps — Clean Architecture, real-time systems, and AI-powered experiences for Android &amp; iOS." />
+<meta name="twitter:description" content="Senior Flutter Developer with 5+ years delivering scalable Flutter &amp; Dart mobile applications — Clean Architecture, SDLC, unit testing, CI/CD, Agile Scrum, technical leadership, REST APIs, and performance optimization for Android &amp; iOS." />
 <meta name="twitter:image" content="https://m-saber.web.app/images/linkedin-thumbnail.png" />
 <meta name="twitter:image:alt" content="Mohammed Saber — Senior Flutter Developer portfolio" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -212,7 +212,7 @@
     font-size: 1.1rem;
     line-height: 1.75;
     color: var(--muted);
-    max-width: 520px;
+    max-width: 680px;
     margin-bottom: 2.5rem;
     opacity: 0;
     animation: fadeUp 0.7s ease 0.6s forwards;
@@ -429,8 +429,17 @@
   .ga { background: var(--amber-glow); }
   .proj-num { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 0.75rem; }
   .proj-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
-  .proj-desc { font-size: 0.88rem; line-height: 1.65; color: var(--muted); flex: 1; margin-bottom: 1.5rem; }
+  .proj-desc { font-size: 0.88rem; line-height: 1.65; color: var(--muted); flex: 1; margin-bottom: 1rem; }
+  .proj-highlights { margin-bottom: 1.25rem; }
+  .proj-highlights-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.55rem; }
+  .proj-highlights .skill-tags { gap: 0.35rem; }
+  .proj-highlights .stag { font-size: 0.68rem; padding: 0.2rem 0.55rem; }
   .proj-links { display: flex; gap: 0.6rem; margin-top: auto; }
+  #impact { background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .impact-card { padding: 1.75rem 1.25rem; border-radius: 20px; text-align: center; }
+  .impact-num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.75rem; background: var(--grad-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; margin-bottom: 0.5rem; }
+  .impact-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--dim); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.45; }
   .proj-link { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; padding: 0.4rem 0.9rem; border-radius: 100px; text-decoration: none; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); color: var(--muted); transition: all 0.2s; cursor: none; }
   .proj-link:hover { background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.25); color: var(--violet); }
   #contact { border-top: 1px solid rgba(255,255,255,0.04); }
@@ -508,8 +517,8 @@
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-  @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr 1fr; } .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } .contact-grid { grid-template-columns: 1fr; } }
-  @media (max-width: 640px) { nav { padding: 1rem 1.25rem; } .nav-links { display: none; } #hero { padding: 7rem 1.25rem 4rem; } .section-wrap { padding: 4.5rem 1.25rem; } .skills-grid { grid-template-columns: 1fr; } .contact-box { padding: 2.5rem 1.5rem; } .tl-card { padding: 1.25rem; } body { cursor: auto; } .cursor, .cursor-ring { display: none; } .floating-contact { bottom: 1rem; right: 1rem; gap: 0.6rem; } .float-btn { width: 3rem; height: 3rem; cursor: pointer; } .float-tooltip { display: none; } .btn-call, .btn-wa { cursor: pointer; } }
+  @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr 1fr; } .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } .contact-grid { grid-template-columns: 1fr; } .impact-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { nav { padding: 1rem 1.25rem; } .nav-links { display: none; } #hero { padding: 7rem 1.25rem 4rem; } .section-wrap { padding: 4.5rem 1.25rem; } .skills-grid { grid-template-columns: 1fr; } .impact-grid { grid-template-columns: 1fr; } .contact-box { padding: 2.5rem 1.5rem; } .tl-card { padding: 1.25rem; } body { cursor: auto; } .cursor, .cursor-ring { display: none; } .floating-contact { bottom: 1rem; right: 1rem; gap: 0.6rem; } .float-btn { width: 3rem; height: 3rem; cursor: pointer; } .float-tooltip { display: none; } .btn-call, .btn-wa { cursor: pointer; } }
 </style>
 </head>
 <body>
@@ -530,6 +539,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#impact">Impact</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact" class="nav-cta">Hire Me</a></li>
   </ul>
@@ -547,7 +557,7 @@
     <span class="name-grad">Exceptional</span><br>
     <span class="name-plain">Mobile Apps</span>
   </h1>
-  <p class="hero-sub">Cross-platform mobile architect specializing in Flutter, Clean Architecture, real-time systems, and AI-powered experiences for Android &amp; iOS.</p>
+  <p class="hero-sub">Senior Flutter Developer with 5+ years of experience delivering scalable cross-platform applications using Flutter, Dart, Clean Architecture, CI/CD pipelines, Agile methodologies, and modern software engineering practices — spanning the full SDLC with unit testing discipline and technical leadership across Android &amp; iOS teams.</p>
   <div class="hero-actions">
     <a href="#projects" class="btn-grad">View My Work →</a>
     <a href="#contact" class="btn-outline">Get In Touch</a>
@@ -590,16 +600,17 @@
         <div class="pill-label pill-violet reveal">About Me</div>
         <h2 class="sec-title reveal">Crafting apps users <span class="grad">love &amp; trust</span></h2>
         <div class="about-text reveal">
-          <p>Senior Flutter Developer with over 5 years mastering the full mobile development lifecycle — from system design and Clean Architecture to App Store delivery and production monitoring.</p>
-          <p>I specialize in integrating AI and agentic capabilities into mobile products, including LLM-powered features, intelligent automation, and AI-driven workflows that translate cutting-edge tech into real user value.</p>
-          <p>Known for reducing crash rates to under 0.2%, leading technical decisions that elevate product quality, and shipping apps that consistently achieve 4.0★+ ratings.</p>
+          <p>Senior Flutter Developer with 5+ years of experience leading the design, development, testing, deployment, and maintenance of enterprise-grade mobile applications. Experienced in the complete SDLC, architectural decision-making, mentoring developers, conducting code reviews, and delivering scalable Flutter solutions using Clean Architecture and modern engineering practices.</p>
+          <p>I collaborate closely with product managers, designers, QA engineers, and backend teams to build high-quality mobile products that are secure, performant, maintainable, and user-focused.</p>
+          <p>My expertise includes application architecture, CI/CD automation, performance profiling, testing strategies, and continuous improvement of engineering processes.</p>
+          <p>I'm passionate about the intersection of AI and software development. I actively integrate AI tools — including GitHub Copilot, Claude, and ChatGPT — into my daily workflow to write better code, resolve issues faster, and continuously raise my output quality.</p>
         </div>
       </div>
       <div class="about-cards reveal">
         <div class="glass about-card"><div class="about-card-key">Location</div><div class="about-card-val">Cairo, Egypt 🇪🇬</div></div>
         <div class="glass about-card"><div class="about-card-key">Status</div><div class="about-card-val val-grad">Open to Work</div></div>
         <div class="glass about-card"><div class="about-card-key">Platforms</div><div class="about-card-val">Android &amp; iOS</div></div>
-        <div class="glass about-card"><div class="about-card-key">Focus</div><div class="about-card-val">Flutter + AI</div></div>
+        <div class="glass about-card"><div class="about-card-key">Focus</div><div class="about-card-val">Mobile &amp; AI</div></div>
         <div class="glass about-card"><div class="about-card-key">Education</div><div class="about-card-val">BSc Computer Science</div></div>
         <div class="glass about-card"><div class="about-card-key">University</div><div class="about-card-val">Mansoura Uni</div></div>
       </div>
@@ -616,13 +627,13 @@
         <div class="skill-icon icon-violet">📱</div>
         <div class="skill-title">Flutter &amp; Mobile</div>
         <div class="skill-sub">Core platform</div>
-        <div class="skill-tags"><span class="stag">Flutter</span><span class="stag">Dart</span><span class="stag">Android</span><span class="stag">iOS</span><span class="stag">Deployment</span></div>
+        <div class="skill-tags"><span class="stag">Flutter</span><span class="stag">Dart</span><span class="stag">Mobile Development</span><span class="stag">Android</span><span class="stag">iOS</span><span class="stag">Deployment</span></div>
       </div>
       <div class="glass skill-card reveal">
         <div class="skill-icon icon-cyan">🏗️</div>
         <div class="skill-title">Architecture</div>
         <div class="skill-sub">Patterns &amp; state</div>
-        <div class="skill-tags"><span class="stag">Clean Arch</span><span class="stag">MVVM</span><span class="stag">MVC</span><span class="stag">Bloc/Cubit</span><span class="stag">Riverpod</span><span class="stag">Provider</span></div>
+        <div class="skill-tags"><span class="stag">Clean Architecture</span><span class="stag">Architecture Design</span><span class="stag">MVVM</span><span class="stag">MVC</span><span class="stag">Bloc/Cubit</span><span class="stag">Riverpod</span><span class="stag">Provider</span></div>
       </div>
       <div class="glass skill-card reveal">
         <div class="skill-icon icon-rose">⚡</div>
@@ -644,9 +655,39 @@
       </div>
       <div class="glass skill-card reveal">
         <div class="skill-icon icon-pink">🚀</div>
-        <div class="skill-title">DevOps &amp; Workflow</div>
-        <div class="skill-sub">Delivery pipeline</div>
-        <div class="skill-tags"><span class="stag">Git / GitHub</span><span class="stag">GitLab</span><span class="stag">CI/CD</span><span class="stag">Agile/Scrum</span><span class="stag">Figma</span></div>
+        <div class="skill-title">DevOps &amp; Delivery</div>
+        <div class="skill-sub">Deployment automation</div>
+        <div class="skill-tags"><span class="stag">Git / GitHub</span><span class="stag">GitLab</span><span class="stag">CI/CD</span><span class="stag">CI/CD Pipelines</span><span class="stag">GitHub Actions</span><span class="stag">GitLab CI</span><span class="stag">Firebase App Distribution</span><span class="stag">Automated Builds</span><span class="stag">Agile/Scrum</span><span class="stag">Figma</span></div>
+      </div>
+      <div class="glass skill-card reveal">
+        <div class="skill-icon icon-violet">💻</div>
+        <div class="skill-title">Software Engineering</div>
+        <div class="skill-sub">Core principles</div>
+        <div class="skill-tags"><span class="stag">SDLC</span><span class="stag">Design Patterns</span><span class="stag">SOLID Principles</span><span class="stag">OOP</span><span class="stag">Clean Code</span><span class="stag">Code Review</span></div>
+      </div>
+      <div class="glass skill-card reveal">
+        <div class="skill-icon icon-cyan">✅</div>
+        <div class="skill-title">Testing &amp; Quality</div>
+        <div class="skill-sub">QA &amp; test strategy</div>
+        <div class="skill-tags"><span class="stag">Unit Testing</span><span class="stag">Widget Testing</span><span class="stag">Integration Testing</span><span class="stag">QA Collaboration</span><span class="stag">Test Coverage</span></div>
+      </div>
+      <div class="glass skill-card reveal">
+        <div class="skill-icon icon-rose">🗄️</div>
+        <div class="skill-title">Database &amp; Backend Integration</div>
+        <div class="skill-sub">Data &amp; APIs</div>
+        <div class="skill-tags"><span class="stag">SQL</span><span class="stag">SQLite</span><span class="stag">REST APIs</span><span class="stag">JSON</span><span class="stag">API Integration</span></div>
+      </div>
+      <div class="glass skill-card reveal">
+        <div class="skill-icon icon-amber">👥</div>
+        <div class="skill-title">Leadership &amp; Collaboration</div>
+        <div class="skill-sub">Team &amp; process</div>
+        <div class="skill-tags"><span class="stag">Technical Leadership</span><span class="stag">Mentoring</span><span class="stag">Sprint Planning</span><span class="stag">Agile Scrum</span><span class="stag">Cross Functional Teams</span></div>
+      </div>
+      <div class="glass skill-card reveal">
+        <div class="skill-icon icon-indigo">📲</div>
+        <div class="skill-title">Native Development</div>
+        <div class="skill-sub">Platform integration</div>
+        <div class="skill-tags"><span class="stag">Kotlin</span><span class="stag">Java</span><span class="stag">Swift Basics</span><span class="stag">Platform Channels</span></div>
       </div>
     </div>
   </div>
@@ -670,6 +711,14 @@
             <li>Led state management using Bloc, Riverpod, and Provider across multiple products.</li>
             <li>Reduced crash rate to &lt;0.2% through proactive monitoring and performance optimization.</li>
             <li>Published multiple apps achieving 4.0★+ ratings on Google Play and App Store.</li>
+            <li>Led architecture decisions and technical implementation strategies for multiple Flutter products.</li>
+            <li>Conducted code reviews and enforced clean code standards across development teams.</li>
+            <li>Mentored junior Flutter developers and supported technical growth initiatives.</li>
+            <li>Collaborated with QA teams to define testing strategies and improve release quality.</li>
+            <li>Implemented CI/CD workflows to streamline deployment and reduce release cycles.</li>
+            <li>Performed performance profiling, optimization, and crash analysis to improve app stability.</li>
+            <li>Worked closely with backend engineers to design and integrate scalable APIs.</li>
+            <li>Participated actively in sprint planning, estimation, retrospectives, and Agile ceremonies.</li>
           </ul>
         </div>
       </div>
@@ -713,20 +762,61 @@
   </div>
 </section>
 
+<section id="impact">
+  <div class="section-wrap">
+    <div class="pill-label pill-violet reveal">Achievements</div>
+    <h2 class="sec-title reveal">Engineering <span class="grad">Impact</span></h2>
+    <div class="impact-grid">
+      <div class="glass impact-card reveal">
+        <div class="impact-num">5+</div>
+        <div class="impact-label">Years Experience</div>
+      </div>
+      <div class="glass impact-card reveal">
+        <div class="impact-num">18+</div>
+        <div class="impact-label">Production Applications</div>
+      </div>
+      <div class="glass impact-card reveal">
+        <div class="impact-num">&lt;0.2%</div>
+        <div class="impact-label">Crash Rate</div>
+      </div>
+      <div class="glass impact-card reveal">
+        <div class="impact-num">4.0+</div>
+        <div class="impact-label">Average Store Rating</div>
+      </div>
+      <div class="glass impact-card reveal">
+        <div class="impact-num">✓</div>
+        <div class="impact-label">Cross Functional Team Leadership</div>
+      </div>
+      <div class="glass impact-card reveal">
+        <div class="impact-num">✓</div>
+        <div class="impact-label">Architecture Ownership</div>
+      </div>
+      <div class="glass impact-card reveal">
+        <div class="impact-num">✓</div>
+        <div class="impact-label">CI/CD Adoption</div>
+      </div>
+      <div class="glass impact-card reveal">
+        <div class="impact-num">✓</div>
+        <div class="impact-label">Production Scale Applications</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="section-wrap">
     <div class="pill-label pill-amber reveal">Portfolio</div>
     <h2 class="sec-title reveal">Production <span class="grad">Apps</span></h2>
     <div class="projects-grid">
-      <div class="glass proj-card reveal"><div class="proj-glow gc"></div><div class="proj-num">PROJECT / 01</div><div class="proj-name">Shajarat Al-Durr App</div><div class="proj-desc">Enjoy a premium Egyptian dining experience with the official Shajarat Al Durr app. Order your favorite dishes from a rich menu of authentic Egyptian cuisine, prepared with high-quality ingredients and delivered with exceptional service. Whether you're craving traditional comfort food or signature grilled specialties, everything you love is now just a few taps away.</div><div class="proj-links"><a href="https://apps.apple.com/us/app/shajarat-al-durr/id6764052712" target="_blank" class="proj-link">App Store ↗</a><a href="https://play.google.com/store/apps/details?id=com.app.shajrateldor" target="_blank" class="proj-link">Google Play ↗</a></div></div>
-      <div class="glass proj-card reveal"><div class="proj-glow gv"></div><div class="proj-num">PROJECT / 02</div><div class="proj-name">RAALC</div><div class="proj-desc">Dubai Courts' official gateway to legal and governmental services — powers of attorney, notary services, attestations, and legal translations for individuals and businesses.</div><div class="proj-links"><a href="https://apps.apple.com/us/app/raalc-app/id6761058043" target="_blank" class="proj-link">App Store ↗</a><a href="https://play.google.com/store/apps/details?id=com.app.raalc&amp;hl=en_US" target="_blank" class="proj-link">Google Play ↗</a></div></div>
-      <div class="glass proj-card reveal"><div class="proj-glow gc"></div><div class="proj-num">PROJECT / 03</div><div class="proj-name">Dayra Market</div><div class="proj-desc">Marketplace for quality renewed electronics — smartphones, laptops, and gaming consoles — with 40+ quality checks and full warranty coverage.</div><div class="proj-links"><a href="https://apps.apple.com/us/app/dayra-market/id6758339703" target="_blank" class="proj-link">App Store ↗</a></div></div>
-      <div class="glass proj-card reveal"><div class="proj-glow gr"></div><div class="proj-num">PROJECT / 04</div><div class="proj-name">Egypt Real Estate</div><div class="proj-desc">Official real estate platform with project discovery, mortgage flow (Banque Misr), favorites, and full Arabic &amp; English language support.</div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=gov.eg.realestate" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/egypt-real-estate/id6755194131" target="_blank" class="proj-link">App Store ↗</a></div></div>
-      <div class="glass proj-card reveal"><div class="proj-glow ga"></div><div class="proj-num">PROJECT / 05</div><div class="proj-name">Dog Drive</div><div class="proj-desc">Pet ride-hailing app with real-time tracking via Google Maps, SignalR, and Firebase — safe and reliable transport for pets and their owners.</div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.app.dog_drive_new" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/dog-drive/id6748642520" target="_blank" class="proj-link">App Store ↗</a></div></div>
-      <div class="glass proj-card reveal"><div class="proj-glow gv"></div><div class="proj-num">PROJECT / 06</div><div class="proj-name">Egypt for Auctions</div><div class="proj-desc">Live auction system with real-time bidding via Socket.IO and instant push notifications for a fast, competitive auction experience.</div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.mazadatApp.masrMazadat" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/egypt-auctions-%D9%85%D8%B5%D8%B1-%D9%84%D9%84%D9%85%D8%B2%D8%A7%D8%AF%D8%A7%D8%AA/id6590630402" target="_blank" class="proj-link">App Store ↗</a></div></div>
-      <div class="glass proj-card reveal"><div class="proj-glow gc"></div><div class="proj-num">PROJECT / 07</div><div class="proj-name">We Lyra</div><div class="proj-desc">Multilingual, scalable e-commerce shopping platform built for global reach with seamless localization and performance-first architecture.</div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.application.welyra" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/welyra/id6739073762" target="_blank" class="proj-link">App Store ↗</a></div></div>
-      <div class="glass proj-card reveal"><div class="proj-glow gr"></div><div class="proj-num">PROJECT / 08</div><div class="proj-name">ENERGIZE PLUS</div><div class="proj-desc">Sales and marketing management system delivering real-time performance reports and brand activity alignment for field teams.</div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.sahl.solution.energizeplus" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/energize-plus/id6475412039" target="_blank" class="proj-link">App Store ↗</a></div></div>
-      <div class="glass proj-card reveal"><div class="proj-glow ga"></div><div class="proj-num">PROJECT / 09</div><div class="proj-name">Suhail App</div><div class="proj-desc">Logistics platform for shipment creation with captain selection based on ratings and profiles — streamlining last-mile delivery operations.</div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.suhail.app" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/suhail-%D8%B3%D9%87%D9%8A%D9%84/id1644121617" target="_blank" class="proj-link">App Store ↗</a></div></div>
+      <div class="glass proj-card reveal"><div class="proj-glow gc"></div><div class="proj-num">PROJECT / 01</div><div class="proj-name">Shajarat Al-Durr App</div><div class="proj-desc">Enjoy a premium Egyptian dining experience with the official Shajarat Al Durr app. Order your favorite dishes from a rich menu of authentic Egyptian cuisine, prepared with high-quality ingredients and delivered with exceptional service. Whether you're craving traditional comfort food or signature grilled specialties, everything you love is now just a few taps away.</div><div class="proj-highlights"><div class="proj-highlights-label">Technical Highlights</div><div class="skill-tags"><span class="stag">Clean Architecture</span><span class="stag">Bloc/Cubit</span><span class="stag">REST APIs</span><span class="stag">Firebase</span><span class="stag">Unit Testing</span></div></div><div class="proj-links"><a href="https://apps.apple.com/us/app/shajarat-al-durr/id6764052712" target="_blank" class="proj-link">App Store ↗</a><a href="https://play.google.com/store/apps/details?id=com.app.shajrateldor" target="_blank" class="proj-link">Google Play ↗</a></div></div>
+      <div class="glass proj-card reveal"><div class="proj-glow gv"></div><div class="proj-num">PROJECT / 02</div><div class="proj-name">RAALC</div><div class="proj-desc">Dubai Courts' official gateway to legal and governmental services — powers of attorney, notary services, attestations, and legal translations for individuals and businesses.</div><div class="proj-highlights"><div class="proj-highlights-label">Technical Highlights</div><div class="skill-tags"><span class="stag">Clean Architecture</span><span class="stag">Riverpod</span><span class="stag">REST APIs</span><span class="stag">Firebase</span><span class="stag">CI/CD</span><span class="stag">Application Security</span></div></div><div class="proj-links"><a href="https://apps.apple.com/us/app/raalc-app/id6761058043" target="_blank" class="proj-link">App Store ↗</a><a href="https://play.google.com/store/apps/details?id=com.app.raalc&amp;hl=en_US" target="_blank" class="proj-link">Google Play ↗</a></div></div>
+      <div class="glass proj-card reveal"><div class="proj-glow gc"></div><div class="proj-num">PROJECT / 03</div><div class="proj-name">Dayra Market</div><div class="proj-desc">Marketplace for quality renewed electronics — smartphones, laptops, and gaming consoles — with 40+ quality checks and full warranty coverage.</div><div class="proj-highlights"><div class="proj-highlights-label">Technical Highlights</div><div class="skill-tags"><span class="stag">Clean Architecture</span><span class="stag">Bloc/Cubit</span><span class="stag">REST APIs</span><span class="stag">Unit Testing</span><span class="stag">Performance Optimization</span></div></div><div class="proj-links"><a href="https://apps.apple.com/us/app/dayra-market/id6758339703" target="_blank" class="proj-link">App Store ↗</a></div></div>
+      <div class="glass proj-card reveal"><div class="proj-glow gr"></div><div class="proj-num">PROJECT / 04</div><div class="proj-name">Egypt Real Estate</div><div class="proj-desc">Official real estate platform with project discovery, mortgage flow (Banque Misr), favorites, and full Arabic &amp; English language support.</div><div class="proj-highlights"><div class="proj-highlights-label">Technical Highlights</div><div class="skill-tags"><span class="stag">Clean Architecture</span><span class="stag">Riverpod</span><span class="stag">REST APIs</span><span class="stag">SQL/SQLite</span><span class="stag">Performance Optimization</span></div></div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=gov.eg.realestate" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/egypt-real-estate/id6755194131" target="_blank" class="proj-link">App Store ↗</a></div></div>
+      <div class="glass proj-card reveal"><div class="proj-glow ga"></div><div class="proj-num">PROJECT / 05</div><div class="proj-name">Dog Drive</div><div class="proj-desc">Pet ride-hailing app with real-time tracking via Google Maps, SignalR, and Firebase — safe and reliable transport for pets and their owners.</div><div class="proj-highlights"><div class="proj-highlights-label">Technical Highlights</div><div class="skill-tags"><span class="stag">Clean Architecture</span><span class="stag">Bloc/Cubit</span><span class="stag">SignalR</span><span class="stag">Firebase</span><span class="stag">Google Maps</span><span class="stag">Performance Optimization</span></div></div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.app.dog_drive_new" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/dog-drive/id6748642520" target="_blank" class="proj-link">App Store ↗</a></div></div>
+      <div class="glass proj-card reveal"><div class="proj-glow gv"></div><div class="proj-num">PROJECT / 06</div><div class="proj-name">Egypt for Auctions</div><div class="proj-desc">Live auction system with real-time bidding via Socket.IO and instant push notifications for a fast, competitive auction experience.</div><div class="proj-highlights"><div class="proj-highlights-label">Technical Highlights</div><div class="skill-tags"><span class="stag">Clean Architecture</span><span class="stag">Bloc/Cubit</span><span class="stag">Socket.IO</span><span class="stag">REST APIs</span><span class="stag">Firebase</span><span class="stag">CI/CD</span></div></div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.mazadatApp.masrMazadat" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/egypt-auctions-%D9%85%D8%B5%D8%B1-%D9%84%D9%84%D9%85%D8%B2%D8%A7%D8%AF%D8%A7%D8%AA/id6590630402" target="_blank" class="proj-link">App Store ↗</a></div></div>
+      <div class="glass proj-card reveal"><div class="proj-glow gc"></div><div class="proj-num">PROJECT / 07</div><div class="proj-name">We Lyra</div><div class="proj-desc">Multilingual, scalable e-commerce shopping platform built for global reach with seamless localization and performance-first architecture.</div><div class="proj-highlights"><div class="proj-highlights-label">Technical Highlights</div><div class="skill-tags"><span class="stag">Clean Architecture</span><span class="stag">Riverpod</span><span class="stag">REST APIs</span><span class="stag">Performance Optimization</span><span class="stag">CI/CD</span><span class="stag">Unit Testing</span></div></div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.application.welyra" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/welyra/id6739073762" target="_blank" class="proj-link">App Store ↗</a></div></div>
+      <div class="glass proj-card reveal"><div class="proj-glow gr"></div><div class="proj-num">PROJECT / 08</div><div class="proj-name">ENERGIZE PLUS</div><div class="proj-desc">Sales and marketing management system delivering real-time performance reports and brand activity alignment for field teams.</div><div class="proj-highlights"><div class="proj-highlights-label">Technical Highlights</div><div class="skill-tags"><span class="stag">Clean Architecture</span><span class="stag">Bloc/Cubit</span><span class="stag">REST APIs</span><span class="stag">SQL/SQLite</span><span class="stag">Unit Testing</span></div></div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.sahl.solution.energizeplus" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/energize-plus/id6475412039" target="_blank" class="proj-link">App Store ↗</a></div></div>
+      <div class="glass proj-card reveal"><div class="proj-glow ga"></div><div class="proj-num">PROJECT / 09</div><div class="proj-name">Suhail App</div><div class="proj-desc">Logistics platform for shipment creation with captain selection based on ratings and profiles — streamlining last-mile delivery operations.</div><div class="proj-highlights"><div class="proj-highlights-label">Technical Highlights</div><div class="skill-tags"><span class="stag">Clean Architecture</span><span class="stag">Riverpod</span><span class="stag">REST APIs</span><span class="stag">Google Maps</span><span class="stag">Firebase</span><span class="stag">Performance Optimization</span></div></div><div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.suhail.app" target="_blank" class="proj-link">Google Play ↗</a><a href="https://apps.apple.com/eg/app/suhail-%D8%B3%D9%87%D9%8A%D9%84/id1644121617" target="_blank" class="proj-link">App Store ↗</a></div></div>
     </div>
   </div>
 </section>
@@ -736,7 +826,7 @@
     <div class="contact-box reveal">
       <div class="pill-label pill-violet" style="margin: 0 auto 1.5rem; width: fit-content;">Contact</div>
       <h2 class="contact-title">Let's build something <span class="grad">amazing</span> together</h2>
-      <p class="contact-sub">Have a project in mind or want to talk Flutter, architecture, or mobile AI? I'm always open to the right opportunities.</p>
+      <p class="contact-sub">Have a project in mind or want to discuss Flutter mobile development, architecture design, CI/CD, or technical leadership? I'm open to senior roles and cross-functional collaboration.</p>
       <div class="contact-actions">
         <a href="tel:+201156165689" class="btn-call" aria-label="Call Mohamed Saber at +20 115 616 5689" title="Call +20 115 616 5689">
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
